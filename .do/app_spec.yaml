@@ -2,7 +2,7 @@ name: teller-subgraph-health-monitor
 
 # Worker service - runs continuously in the background
 workers:
-  - name: health-bot
+  - name: health-monitor
     # Use Dockerfile for build
     dockerfile_path: Dockerfile
 
