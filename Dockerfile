@@ -24,14 +24,15 @@ RUN cargo build --release
 
 
 
-#set up the scrapebot_runtime image with the binary and env 
+#set up the scrapebot_runtime image with the binary and env
 FROM debian:bullseye-slim AS combined_bot_runtime
 WORKDIR /app
 RUN apt update && apt install -y ca-certificates
 COPY --from=builder /app/target/release/health_bot /app/health_bot
+COPY --from=builder /app/src/endpoints.ron /app/src/endpoints.ron
 #COPY .env /app/.env
 
-#run the app 
+#run the app
 ENTRYPOINT ["/app/health_bot"]
 
  
