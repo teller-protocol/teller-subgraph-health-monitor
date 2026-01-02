@@ -29,6 +29,8 @@ struct MonitorConfig {
 
 }
 
+const  FOUR_HOURS:u64 = 3600 * 4 ; 
+
 
 impl MonitorConfig {
 
@@ -53,7 +55,7 @@ async fn main() {
     // Create a shared index to track which endpoint to check next
     let endpoint_config =   Arc::new(Mutex::new(  MonitorConfig::default() ))   ;
 
-    let mut interval = time::interval(Duration::from_secs(600)); // 1 hour = 3600 seconds
+    let mut interval = time::interval(Duration::from_secs( FOUR_HOURS )); // 1 hour = 3600 seconds
 
     loop {
         interval.tick().await;
