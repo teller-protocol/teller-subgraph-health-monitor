@@ -19,6 +19,7 @@ struct EndpointConfig {
 struct Endpoint {
     url: String,
     body: String,
+    auth_key: Option<String>,
 } 
 
 #[derive(Debug, Clone, Default )]
@@ -93,11 +94,26 @@ async fn pulse_monitor(endpoint_config: Arc< Mutex<  MonitorConfig> > ) {
     if let Some(endpoint_data) = config.endpoints.get(endpoint_index) {
         println!("Querying endpoint {}: {}", endpoint_index, endpoint_data.url);
 
+        // Get auth token from environment if auth_key is specified
+        let auth_token = endpoint_data.auth_key.as_ref().and_then(|key| {
+            let env_var_name = format!("{}", key );
+            match env::var(&env_var_name) {
+                Ok(token) => {
+                    println!("Using authentication for endpoint with key: {}", key);
+                    Some(token)
+                }
+                Err(_) => {
+                    eprintln!("Warning: auth_key '{}' specified but {} environment variable not set", key, env_var_name);
+                    None
+                }
+            }
+        });
+
         // Parse the body string as JSON
         match serde_json::from_str(&endpoint_data.body) {
             Ok(body) => {
                 // Make the POST request
-                match make_post_request(&client, &endpoint_data.url, body).await {
+                match make_post_request(&client, &endpoint_data.url, body, auth_token.as_deref()).await {
                     Ok(response) => {
                         println!("✓ Successfully queried endpoint: {}", endpoint_data.url);
                         println!("Response: {}", response);
@@ -183,16 +199,20 @@ async fn get_cursor_block() -> Result<U256, Box<dyn std::error::Error>> {
     }
 }*/
 
-async fn make_post_request(client: &reqwest::Client, url: &str, body: serde_json::Value) -> Result<String, reqwest::Error> {
-   
-    
-    let response = client
+async fn make_post_request(client: &reqwest::Client, url: &str, body: serde_json::Value, auth_token: Option<&str>) -> Result<String, reqwest::Error> {
+
+    let mut request = client
         .post(url)
         .header("Content-Type", "application/json")
-        .json(&body)
-        .send()
-        .await?;
-    
+        .json(&body);
+
+    // Add Bearer token if provided
+    if let Some(token) = auth_token {
+        request = request.bearer_auth(token);
+    }
+
+    let response = request.send().await?;
+
     let text = response.text().await?;
     Ok(text)
 }

@@ -3,7 +3,9 @@
 	endpoints: [
 
 		(
-			url: "https://subgraph.satsuma-prod.com/daba7a4f162f/teller--16564/tellerv2-pools-mainnet/api",
+			url: "https://ethereum-mainnet.graph-eu.p2pify.com/8614c21e12ec31df6366661570265a0b/sgr-520-422-765",
+
+			auth_key: Some("CHAINSTACK_AUTH_KEY"), 
 
 			body: "{\"query\":\"{ _meta { block { number hash } } }\"}",  
 
