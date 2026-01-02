@@ -1,6 +1,6 @@
 spec:
   name: teller-subgraph-health-monitor
-  services:
+  workers:
   - dockerfile_path: Dockerfile
     git:
       branch: master
