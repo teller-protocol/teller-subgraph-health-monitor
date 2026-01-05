@@ -2,16 +2,49 @@
 
 	endpoints: [
 
-		(
+		(	
+		    name: "Chainstack PoolV1 Mainnet",
 			url: "https://ethereum-mainnet.graph-eu.p2pify.com/8614c21e12ec31df6366661570265a0b/sgr-520-422-765",
 
 			auth_key: Some("CHAINSTACK_AUTH_TOKEN"), 
 
 			body: "{\"query\":\"{ _meta { block { number hash } } }\"}",  
 
-		)
+		),
 
 
+		(	
+		    name: "Chainstack PoolV1 Arbitrum",
+			url: "https://arbitrum-mainnet.graph-eu.p2pify.com/931a3372bc471da17f3c37b51c71103f/sgr-821-576-009",
+
+			auth_key: Some("CHAINSTACK_AUTH_TOKEN"), 
+
+			body: "{\"query\":\"{ _meta { block { number hash } } }\"}",  
+
+		),
+
+ 
+		(	
+		    name: "Chainstack PoolV1 Base",
+			url: "https://base-mainnet.graph-eu.p2pify.com/6597d6ea90c8f7590fa0d7ca2437b00a/sgr-204-614-601",
+
+			auth_key: Some("CHAINSTACK_AUTH_TOKEN"), 
+
+			body: "{\"query\":\"{ _meta { block { number hash } } }\"}",  
+
+		),
+
+
+
+		(	
+		    name: "Chainstack PoolV1 Polygon",
+			url: "https://polygon-mainnet.graph-eu.p2pify.com/fb4e3d5be61df3d47d5e6031477a3cbd/sgr-928-637-070",
+
+			auth_key: Some("CHAINSTACK_AUTH_TOKEN"), 
+
+			body: "{\"query\":\"{ _meta { block { number hash } } }\"}",  
+
+		),
 
 
 
