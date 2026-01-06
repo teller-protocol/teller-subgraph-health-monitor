@@ -17,6 +17,7 @@ struct EndpointConfig {
 
 #[derive(Debug, Deserialize)]
 struct Endpoint {
+    name: String, 
     url: String,
     body: String,
     auth_key: Option<String>,
@@ -29,7 +30,7 @@ struct MonitorConfig {
 
 }
 
-const  FOUR_HOURS:u64 = 3600 * 4 ; 
+const  ONE_HOUR:u64 = 3600 * 1 ; 
 
 
 impl MonitorConfig {
@@ -55,7 +56,7 @@ async fn main() {
     // Create a shared index to track which endpoint to check next
     let endpoint_config =   Arc::new(Mutex::new(  MonitorConfig::default() ))   ;
 
-    let mut interval = time::interval(Duration::from_secs( FOUR_HOURS )); // 1 hour = 3600 seconds
+    let mut interval = time::interval(Duration::from_secs( ONE_HOUR )); // 1 hour = 3600 seconds
 
     loop {
         interval.tick().await;
@@ -129,8 +130,8 @@ async fn pulse_monitor(endpoint_config: Arc< Mutex<  MonitorConfig> > ) {
                         let timestamp = now_ny.format("%Y-%m-%d %H:%M:%S %Z").to_string();
 
                         let message = format!(
-                            "⚠️ GraphQL Endpoint Failed!\nTimestamp: {}\nEndpoint: {}\nError: {}",
-                            timestamp, endpoint_data.url, e
+                            "⚠️ GraphQL Endpoint Failed!\nTimestamp: {}\nEndpoint: {} {}\nError: {}",
+                            timestamp, endpoint_data.name,  endpoint_data.url, e
                         );
 
                         send_slack_warning(&message).await;

@@ -2,6 +2,103 @@
 
 	endpoints: [
 
+
+
+
+		 (	
+		    name: "Goldsky PoolV1 Mainnet",
+			url: "https://api.goldsky.com/api/private/project_cmgzjtkxv004t5np2ea5j9zt1/subgraphs/tellerv2-pools-mainnet/0.4.21.6/gn",
+
+			auth_key: Some("GOLDSKY_AUTH_TOKEN"), 
+
+			body: "{\"query\":\"{ _meta { block { number hash } } }\"}",  
+
+		),
+
+	    (	
+		    name: "Goldsky PoolV1 Base",
+			url: "https://api.goldsky.com/api/private/project_cmgzjtkxv004t5np2ea5j9zt1/subgraphs/tellerv2-pools-base/0.4.21.4/gn",
+
+			auth_key: Some("GOLDSKY_AUTH_TOKEN"), 
+
+			body: "{\"query\":\"{ _meta { block { number hash } } }\"}",  
+
+		),
+
+
+	    (	
+		    name: "Goldsky PoolV1 Arbitrum",
+			url: "https://api.goldsky.com/api/private/project_cmgzjtkxv004t5np2ea5j9zt1/subgraphs/tellerv2-pools-arbitrum/0.4.21.4/gn",
+
+			auth_key: Some("GOLDSKY_AUTH_TOKEN"), 
+
+			body: "{\"query\":\"{ _meta { block { number hash } } }\"}",  
+
+		),
+
+
+	      (	
+		    name: "Goldsky PoolV1 Polygon",
+			url: "https://api.goldsky.com/api/private/project_cmgzjtkxv004t5np2ea5j9zt1/subgraphs/tellerv2-pools-polygon/0.4.21.4/gn",
+
+			auth_key: Some("GOLDSKY_AUTH_TOKEN"), 
+
+			body: "{\"query\":\"{ _meta { block { number hash } } }\"}",  
+
+		),
+
+
+
+	      (	
+		    name: "Goldsky PoolV2 Mainnet",
+			url: "https://api.goldsky.com/api/private/project_cmgzjtkxv004t5np2ea5j9zt1/subgraphs/tellerv2-poolsv2-mainnet/0.4.21.5/gn",
+
+			auth_key: Some("GOLDSKY_AUTH_TOKEN"), 
+
+			body: "{\"query\":\"{ _meta { block { number hash } } }\"}",  
+
+		),
+
+
+	      
+	      (	
+		    name: "Goldsky PoolV2 Base",
+			url: "https://api.goldsky.com/api/private/project_cmgzjtkxv004t5np2ea5j9zt1/subgraphs/tellerv2-poolsv2-base/0.4.21.5/gn",
+
+			auth_key: Some("GOLDSKY_AUTH_TOKEN"), 
+
+			body: "{\"query\":\"{ _meta { block { number hash } } }\"}",  
+
+		),
+
+
+	       (	
+		    name: "Goldsky PoolV2 Arbitrum",
+			url: "https://api.goldsky.com/api/private/project_cmgzjtkxv004t5np2ea5j9zt1/subgraphs/tellerv2-poolsv2-arbitrum/0.4.21.5/gn",
+
+			auth_key: Some("GOLDSKY_AUTH_TOKEN"), 
+
+			body: "{\"query\":\"{ _meta { block { number hash } } }\"}",  
+
+		),
+
+
+	       (	
+		    name: "Goldsky PoolV2 Polygon",
+			url: "https://api.goldsky.com/api/private/project_cmgzjtkxv004t5np2ea5j9zt1/subgraphs/tellerv2-poolsv2-polygon/0.4.21.5/gn",
+
+			auth_key: Some("GOLDSKY_AUTH_TOKEN"), 
+
+			body: "{\"query\":\"{ _meta { block { number hash } } }\"}",  
+
+		),
+
+
+		 
+
+
+
+
 		(	
 		    name: "Chainstack PoolV1 Mainnet",
 			url: "https://ethereum-mainnet.graph-eu.p2pify.com/8614c21e12ec31df6366661570265a0b/sgr-520-422-765",
@@ -45,6 +142,55 @@
 			body: "{\"query\":\"{ _meta { block { number hash } } }\"}",  
 
 		),
+
+
+
+		(	
+		    name: "Chainstack PoolV2 Mainnet",
+			url: "https://arbitrum-mainnet.graph-eu.p2pify.com/6d8e738c9fe322e8b5b593f9bcc907cb/sgr-575-510-903",
+
+			auth_key: Some("CHAINSTACK_AUTH_TOKEN"), 
+
+			body: "{\"query\":\"{ _meta { block { number hash } } }\"}",  
+
+		),
+
+		(	
+		    name: "Chainstack PoolV2 Base",
+			url: "https://base-mainnet.graph-eu.p2pify.com/ee28001bf0cbdbea2ef8eced485e2e28/sgr-955-405-762",
+
+			auth_key: Some("CHAINSTACK_AUTH_TOKEN"), 
+
+			body: "{\"query\":\"{ _meta { block { number hash } } }\"}",  
+
+		),
+
+		(	
+		    name: "Chainstack PoolV2 Arbitrum",
+			url: "https://arbitrum-mainnet.graph-eu.p2pify.com/6d8e738c9fe322e8b5b593f9bcc907cb/sgr-575-510-903",
+
+			auth_key: Some("CHAINSTACK_AUTH_TOKEN"), 
+
+			body: "{\"query\":\"{ _meta { block { number hash } } }\"}",  
+
+		),
+
+
+
+		 (	
+		    name: "Chainstack PoolV2 Polygon",
+			url: "https://polygon-mainnet.graph-eu.p2pify.com/fbde3dc4bd40cb85f7a2888c29656dc1/sgr-999-212-576",
+
+			auth_key: Some("CHAINSTACK_AUTH_TOKEN"), 
+
+			body: "{\"query\":\"{ _meta { block { number hash } } }\"}",  
+
+		),
+
+
+
+
+		 
 
 
 
