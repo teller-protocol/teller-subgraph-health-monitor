@@ -4,6 +4,54 @@
 
 
 
+		(
+			name: "TheGraph TellerV2 Mainnet",
+
+			url:"https://gateway.thegraph.com/api/subgraphs/id/4JruhWH1ZdwvUuMg2xCmtnZQYYHvmEq6cmTcZkpM6pW",
+
+			auth_key:Some("THEGRAPH_AUTH_TOKEN"),
+
+
+			body: "{ _meta { block { number hash } } }",  
+		),
+
+
+		(
+			name: "TheGraph TellerV2 Base",
+
+			url:"https://gateway.thegraph.com/api/subgraphs/id/ArZjkaosc5rmBoYqprFWomvnjKSFMGkPFD7yuaZGuqQo",
+
+			auth_key:Some("THEGRAPH_AUTH_TOKEN"),
+
+
+			body: "{ _meta { block { number hash } } }",  
+		),
+
+		(
+			name: "TheGraph TellerV2 Arbitrum",
+
+			url:"https://gateway.thegraph.com/api/subgraphs/id/F2Cgx4q4ATiopuZ13nr1EMKmZXwfAdevF3EujqfayK7a",
+
+			auth_key:Some("THEGRAPH_AUTH_TOKEN"),
+
+
+			body: "{ _meta { block { number hash } } }",  
+		),
+
+		(
+			name: "TheGraph TellerV2 Polygon",
+
+			url:"https://gateway.thegraph.com/api/subgraphs/id/8bjHtQZ9PZUMQAbCGJw5Zx2SbZZY2LQz8WH3rURzN5do",
+
+			auth_key:Some("THEGRAPH_AUTH_TOKEN"),
+
+
+			body: "{ _meta { block { number hash } } }",  
+		),
+
+
+
+
 
 		 (	
 		    name: "Goldsky PoolV1 Mainnet",
@@ -11,7 +59,7 @@
 
 			auth_key: Some("GOLDSKY_AUTH_TOKEN"), 
 
-			body: "{\"query\":\"{ _meta { block { number hash } } }\"}",  
+			body: "{ _meta { block { number hash } } }",  
 
 		),
 
@@ -21,7 +69,7 @@
 
 			auth_key: Some("GOLDSKY_AUTH_TOKEN"), 
 
-			body: "{\"query\":\"{ _meta { block { number hash } } }\"}",  
+			body: "{ _meta { block { number hash } } }",  
 
 		),
 
@@ -32,7 +80,7 @@
 
 			auth_key: Some("GOLDSKY_AUTH_TOKEN"), 
 
-			body: "{\"query\":\"{ _meta { block { number hash } } }\"}",  
+			body: "{ _meta { block { number hash } } }",  
 
 		),
 
@@ -43,7 +91,7 @@
 
 			auth_key: Some("GOLDSKY_AUTH_TOKEN"), 
 
-			body: "{\"query\":\"{ _meta { block { number hash } } }\"}",  
+			body: "{ _meta { block { number hash } } }",  
 
 		),
 
@@ -55,7 +103,7 @@
 
 			auth_key: Some("GOLDSKY_AUTH_TOKEN"), 
 
-			body: "{\"query\":\"{ _meta { block { number hash } } }\"}",  
+			body: "{ _meta { block { number hash } } }",  
 
 		),
 
@@ -67,7 +115,7 @@
 
 			auth_key: Some("GOLDSKY_AUTH_TOKEN"), 
 
-			body: "{\"query\":\"{ _meta { block { number hash } } }\"}",  
+			body: "{ _meta { block { number hash } } }",  
 
 		),
 
@@ -78,7 +126,7 @@
 
 			auth_key: Some("GOLDSKY_AUTH_TOKEN"), 
 
-			body: "{\"query\":\"{ _meta { block { number hash } } }\"}",  
+			body: "{ _meta { block { number hash } } }",  
 
 		),
 
@@ -89,7 +137,7 @@
 
 			auth_key: Some("GOLDSKY_AUTH_TOKEN"), 
 
-			body: "{\"query\":\"{ _meta { block { number hash } } }\"}",  
+			body: "{ _meta { block { number hash } } }",  
 
 		),
 
@@ -105,7 +153,7 @@
 
 			auth_key: Some("CHAINSTACK_AUTH_TOKEN"), 
 
-			body: "{\"query\":\"{ _meta { block { number hash } } }\"}",  
+			body: "{ _meta { block { number hash } } }",  
 
 		),
 
@@ -116,7 +164,7 @@
 
 			auth_key: Some("CHAINSTACK_AUTH_TOKEN"), 
 
-			body: "{\"query\":\"{ _meta { block { number hash } } }\"}",  
+			body: "{ _meta { block { number hash } } }",  
 
 		),
 
@@ -127,7 +175,7 @@
 
 			auth_key: Some("CHAINSTACK_AUTH_TOKEN"), 
 
-			body: "{\"query\":\"{ _meta { block { number hash } } }\"}",  
+			body: "{ _meta { block { number hash } } }",  
 
 		),
 
@@ -139,7 +187,7 @@
 
 			auth_key: Some("CHAINSTACK_AUTH_TOKEN"), 
 
-			body: "{\"query\":\"{ _meta { block { number hash } } }\"}",  
+			body: "{ _meta { block { number hash } } }",  
 
 		),
 
@@ -151,7 +199,7 @@
 
 			auth_key: Some("CHAINSTACK_AUTH_TOKEN"), 
 
-			body: "{\"query\":\"{ _meta { block { number hash } } }\"}",  
+			body: "{ _meta { block { number hash } } }",  
 
 		),
 
@@ -161,7 +209,7 @@
 
 			auth_key: Some("CHAINSTACK_AUTH_TOKEN"), 
 
-			body: "{\"query\":\"{ _meta { block { number hash } } }\"}",  
+			body: "{ _meta { block { number hash } } }",  
 
 		),
 
@@ -171,7 +219,7 @@
 
 			auth_key: Some("CHAINSTACK_AUTH_TOKEN"), 
 
-			body: "{\"query\":\"{ _meta { block { number hash } } }\"}",  
+			body: "{ _meta { block { number hash } } }",  
 
 		),
 
@@ -183,7 +231,7 @@
 
 			auth_key: Some("CHAINSTACK_AUTH_TOKEN"), 
 
-			body: "{\"query\":\"{ _meta { block { number hash } } }\"}",  
+			body: "{ _meta { block { number hash } } }",  
 
 		),
 

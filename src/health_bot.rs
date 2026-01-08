@@ -112,35 +112,57 @@ async fn pulse_monitor(endpoint_config: Arc< Mutex<  MonitorConfig> > ) {
             }
         });
 
-        // Parse the body string as JSON
-        match serde_json::from_str(&endpoint_data.body) {
-            Ok(body) => {
-                // Make the POST request
-                match make_post_request(&client, &endpoint_data.url, body, auth_token.as_deref()).await {
-                    Ok(response) => {
-                        println!("✓ Successfully queried endpoint: {}", endpoint_data.url);
-                        println!("Response: {}", response);
-                    }
-                    Err(e) => {
-                        eprintln!("✗ Failed to query endpoint {}: {}", endpoint_data.url, e);
+        // Construct proper JSON body for GraphQL query
+        let body = serde_json::json!({
+            "query": endpoint_data.body
+        });
 
-                        // Get current timestamp in New York time
-                        let now_utc: DateTime<Utc> = Utc::now();
-                        let now_ny = now_utc.with_timezone(&Eastern);
-                        let timestamp = now_ny.format("%Y-%m-%d %H:%M:%S %Z").to_string();
+        println!("Query body: {}", serde_json::to_string_pretty(&body).unwrap_or_default());
 
-                        let message = format!(
-                            "⚠️ GraphQL Endpoint Failed!\nTimestamp: {}\nEndpoint: {} {}\nError: {}",
-                            timestamp, endpoint_data.name,  endpoint_data.url, e
-                        );
+        // Make the POST request
+        match make_post_request(&client, &endpoint_data.url, body, auth_token.as_deref()).await {
+            Ok(response) => {
+                // Check if the response contains errors
+                let has_errors = if let Ok(json_response) = serde_json::from_str::<serde_json::Value>(&response) {
+                    json_response.get("errors").is_some()
+                } else {
+                    false
+                };
 
-                        send_slack_warning(&message).await;
-                    }
+                if has_errors {
+                    eprintln!("✗ GraphQL query returned errors for endpoint: {}", endpoint_data.url);
+                    eprintln!("Response: {}", response);
+
+                    // Get current timestamp in New York time
+                    let now_utc: DateTime<Utc> = Utc::now();
+                    let now_ny = now_utc.with_timezone(&Eastern);
+                    let timestamp = now_ny.format("%Y-%m-%d %H:%M:%S %Z").to_string();
+
+                    let message = format!(
+                        "⚠️ GraphQL Endpoint Failed!\nTimestamp: {}\nEndpoint: {} {}\nError: {}",
+                        timestamp, endpoint_data.name, endpoint_data.url, response
+                    );
+
+                    send_slack_warning(&message).await;
+                } else {
+                    println!("✓ Successfully queried endpoint: {}", endpoint_data.url);
+                    println!("Response: {}", response);
                 }
             }
             Err(e) => {
-                eprintln!("Failed to parse JSON body for endpoint {}: {}", endpoint_data.url, e);
-                send_slack_warning(&format!("Failed to parse JSON body for endpoint {}: {}", endpoint_data.url, e)).await;
+                eprintln!("✗ Failed to query endpoint {}: {}", endpoint_data.url, e);
+
+                // Get current timestamp in New York time
+                let now_utc: DateTime<Utc> = Utc::now();
+                let now_ny = now_utc.with_timezone(&Eastern);
+                let timestamp = now_ny.format("%Y-%m-%d %H:%M:%S %Z").to_string();
+
+                let message = format!(
+                    "⚠️ GraphQL Endpoint Failed!\nTimestamp: {}\nEndpoint: {} {}\nError: {}",
+                    timestamp, endpoint_data.name,  endpoint_data.url, e
+                );
+
+                send_slack_warning(&message).await;
             }
         }
     }
@@ -161,6 +183,9 @@ async fn query_endpoint(endpoint_config: Arc< &MonitorConfig> ) {
 }*/ 
 
 async fn send_slack_warning(message: &str) {
+
+    println!("sending slack warning ");
+
     let token = match env::var("SLACK_OAUTH_TOKEN") {
         Ok(t) => t,
         Err(_) => {
