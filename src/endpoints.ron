@@ -41,7 +41,7 @@
 		(
 			name: "TheGraph TellerV2 Polygon",
 
-			url:"https://gateway.thegraph.com/api/subgraphs/id/8bjHtQZ9PZUMQAbCGJw5Zx2SbZZY2LQz8WH3rURzN5do",
+			url:"https://gateway.thegraph.com/api/subgraphs/id/BBp2ZJTG8j4sx9gLoFYN6iLCpWQsNpoiYjXNwRcE3DQr",
 
 			auth_key:Some("THEGRAPH_AUTH_TOKEN"),
 
