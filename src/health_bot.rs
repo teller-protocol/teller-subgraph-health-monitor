@@ -139,7 +139,7 @@ async fn pulse_monitor(endpoint_config: Arc< Mutex<  MonitorConfig> > ) {
                     let timestamp = now_ny.format("%Y-%m-%d %H:%M:%S %Z").to_string();
 
                     let message = format!(
-                        "⚠️ GraphQL Endpoint Failed!\nTimestamp: {}\nEndpoint: {} {}\nError: {}",
+                        "teller subgraph health monitor- ⚠️ GraphQL Endpoint Failed!\nTimestamp: {}\nEndpoint: {} {}\nError: {}",
                         timestamp, endpoint_data.name, endpoint_data.url, response
                     );
 
@@ -158,7 +158,7 @@ async fn pulse_monitor(endpoint_config: Arc< Mutex<  MonitorConfig> > ) {
                 let timestamp = now_ny.format("%Y-%m-%d %H:%M:%S %Z").to_string();
 
                 let message = format!(
-                    "⚠️ GraphQL Endpoint Failed!\nTimestamp: {}\nEndpoint: {} {}\nError: {}",
+                    "teller subgraph health monitor- ⚠️ GraphQL Endpoint Failed!\nTimestamp: {}\nEndpoint: {} {}\nError: {}",
                     timestamp, endpoint_data.name,  endpoint_data.url, e
                 );
 
